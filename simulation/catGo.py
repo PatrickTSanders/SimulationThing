@@ -22,7 +22,7 @@ myimage = dw.loadImage("cat.bmp")
 
 def updateDisplay(state):
     dw.fill(dw.black)
-    dw.draw(myimage, (state, width/2))
+    dw.draw(myimage, (state, height/2))
 
 
 # We'll update the state on each tick by incrementing the x stateinate
