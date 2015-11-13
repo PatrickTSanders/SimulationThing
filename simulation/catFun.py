@@ -45,8 +45,8 @@ myimage = dw.loadImage("cat.bmp")
 # coordinate given by the first component of the state tuple
 #
 def updateDisplay(state):
-    dw.fill(dw.black)
-    dw.draw(myimage, (state[0], height/2))
+    dw.fill(dw.white)
+    dw.draw(myimage, (200, state[0]))
 
 
 ################################################################
