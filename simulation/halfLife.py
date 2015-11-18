@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def nextTime(doubleTime, timeInt):
 
-    time = doubleTime
+    time = 0
     t = 0
 
     timeArray = []
@@ -12,7 +12,7 @@ def nextTime(doubleTime, timeInt):
         timeArray.insert(t, time)
         t += 1
         time = time + doubleTime
-    return(timeArray)
+    return timeArray
 
 
 def nextMass(initMass, timeInt):
@@ -24,17 +24,28 @@ def nextMass(initMass, timeInt):
     while(i <= timeInt-1):
 
         massArray.insert(i, initMass)
-        initMass = initMass//2
+        initMass = initMass/2
 
         i += 1
 
-    return(massArray)
+    return massArray
+
+response = True
+
+while(response == True):
+    initialMass = input('Enter the initial mass of the element: ')
+    decayRate = input('Enter the half life of the element: ')
+
+    x = nextTime(decayRate, 15)
+    y = nextMass(initialMass, 15)
+
+    print(x)
+    print(y)
+
+    plt.plot(x, y)
+    plt.show()
+
+    response = input('Would you like to try a different element (True/False):  ')
 
 
-x = nextTime(20, 6)
-y = nextMass(500, 6)
 
-print(x, y)
-
-plt.plot(x, y)
-plt.show()
