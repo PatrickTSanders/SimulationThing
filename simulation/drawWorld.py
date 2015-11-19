@@ -11,6 +11,8 @@ def makeLabel(content, typeface, size, color):
     font = pg.font.SysFont(typeface, size)
     return font.render(content, size, color)
 
+def drawCircle(color, loc, radius, width=0):
+    pg.draw.circle(rw.displaySurface, color, loc, width)
 
 def fill(color):
     rw.displaySurface.fill(color)
