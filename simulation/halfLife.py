@@ -36,22 +36,23 @@ def next_mass(init_mass, time_int):
 
 response = True
 
-while(response == True):
-    initialMass = input('Enter the initial mass of the element: ')
+
+initialMass = int(input('Enter the initial mass of the element: '))
     #massType = raw_input('What unit of mass was given?: ')
-    decayRate = input('Enter the half life of the element: ')
+decayRate = int(input('Enter the half life of the element: '))
     #timeType = raw_input('What unit of time was given?: ')
 
-    x = next_time(int(decayRate), 10)
-    y = next_mass(int(initialMass), 10)
+x = next_time(int(decayRate), 10)
+y = next_mass(int(initialMass), 10)
 
-    print(x)
-    print(y)
+print(x)
+print(y)
 
-    plt.plot(x, y)
+plt.plot(x, y)
    # plt.ylabel(massType)
    # plt.xlabel(timeType)
 # Initialize world
+
 name = "Half Life"
 width = 500
 height = 500
@@ -62,7 +63,7 @@ rw.newDisplay(width, height, name)
 
 def updateDisplay(state):
     dw.fill(dw.white)
-    dw.drawCircle((0, 0, 255), (250, 250), state[2], 30)
+    dw.drawCircle((0, 0, 255), (250, 250), initialMass, 30)
 
 
 
@@ -77,8 +78,8 @@ def updateDisplay(state):
 
 
 def updateState(state):
-    v = 1
-    return((100,100, state[2]-v)) 
+    v = decayRate
+    return((100,100, initialMass / v)) 
 
 ################################################################
 
