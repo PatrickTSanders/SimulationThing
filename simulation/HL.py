@@ -33,6 +33,10 @@ def next_mass(init_mass, time_int):
 
     return mass_array
 
+
+response = True
+
+
 initialMass = int(input('Enter the initial mass of the element: '))
     #massType = raw_input('What unit of mass was given?: ')
 decayRate = int(input('Enter the half life of the element: '))
@@ -59,7 +63,7 @@ rw.newDisplay(width, height, name)
 
 def updateDisplay(state):
     dw.fill(dw.white)
-    dw.drawCircle((0, 0, 255), (250, 250), state[2], 30)
+    dw.drawCircle((0, 0, 255), (250, 250), initialMass, 30)
 
 
 
@@ -75,7 +79,7 @@ def updateDisplay(state):
 
 def updateState(state):
     v = decayRate
-    return((100,100, state[2]-v)) 
+    return((100,100, initialMass / v)) 
 
 ################################################################
 
@@ -83,11 +87,10 @@ def updateState(state):
 # that is, when pos is less then zero or greater than the screen width
 # state -> bool
 def endState(state):
-    if (state[2] <= 30):
+    if (state[2] <= 0):
         return True
     else:
         return False
-
 
 ################################################################
 
@@ -118,10 +121,10 @@ def handleEvent(state, event):
 # World state will be single x coordinate at left edge of world
 
 # The cat starts at the left, moving right 
-initState = (100,100,initialMass)
+initState = (100,100,200)
 
 # Run the simulation no faster than 60 frames per second
-frameRate = 20
+frameRate = 3
 
 # Run the simulation!
 rw.runWorld(initState, updateDisplay, updateState, handleEvent,
