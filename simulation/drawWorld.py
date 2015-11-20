@@ -12,7 +12,7 @@ def makeLabel(content, typeface, size, color):
     return font.render(content, size, color)
 
 def drawCircle(color, loc, radius, width=0):
-    pg.draw.circle(rw.displaySurface, color, loc, width)
+    pg.draw.circle(rw.displaySurface, color, loc,radius, width)
 
 def fill(color):
     rw.displaySurface.fill(color)

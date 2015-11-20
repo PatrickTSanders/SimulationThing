@@ -17,7 +17,7 @@ def drawCircle(color, loc, radius, width=0):
 
 def updateDisplay(state):
     dw.fill(dw.white)
-    drawCircle((0, 0, 255), (250, 250), 250, 250)
+    drawCircle((0, 0, 255), (250, 250), 250, 150)
 
 
 
@@ -32,7 +32,7 @@ def updateDisplay(state):
 
 
 def updateState(state):
-    return(state[0]+state[1],state[1],state[2]+state[3],state[3])
+    return(time, initmass * .9**time) 
 
 ################################################################
 
