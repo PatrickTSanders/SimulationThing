@@ -3,7 +3,6 @@ import drawWorld as dw
 import runWorld as rw
 import pygame as pg
 
-
 def next_time(half_rate, time_int):
 
     time = 0
@@ -33,7 +32,7 @@ def next_mass(init_mass, time_int):
 
     return mass_array
 
-initialMass = int(input('Enter the initial mass of the element: '))
+initialMass = int(input('Enter the initial mass of the element, between 100-450: '))
 
 decayRate = int(input('Enter the half life of the element: '))
 
@@ -46,38 +45,40 @@ print(y)
 plt.plot(x, y)
 plt.show()
 
-name = "Half Life"
-width = 500
-height = 500
+name = "Half Life,clicking the mouse will delay the decrease of an element by one tick. Would you let it die?"
+width = 1000
+height = 1000
 rw.newDisplay(width, height, name)
 
 def updateDisplay(state):
     dw.fill(dw.white)
-    dw.drawCircle((0, 0, 255), (250, 250), state[2], 30)
+    dw.drawCircle((0, 0, 255), (500,500), state[2], state[2]-20)
+
+v = decayRate/10+1
 
 def updateState(state):
-    v = decayRate
-    return((100,100, state[2]-v)) 
+    return((500,500, int(state[2]/v))) 
 
 def endState(state):
-    if (state[2] <= 30):
+    if (state[2] <= 20):
         return True
     else:
         return False
 
-def handleEvent(state, event):  
+def handleEvent(state, event):
+    v = decayRate/10+1
     if (event.type == pg.MOUSEBUTTONDOWN):
-        if (state[1]) == 1:
-            newState = -1
+        if (state[2]) <= 300:
+            newstate = int(state[2]*v)
         else:
-            newState = 1
-        return((state[0],newState,state[2]+state[3],state[3]))
+            newstate = int(state[2]/v)
+        return(500,500,newstate)
     else:
-        return(state)
+        return (state)
+            
+initState = (500,500,initialMass)
 
-initState = (100,100,initialMass)
-
-frameRate = 20
+frameRate = 1
 
 rw.runWorld(initState, updateDisplay, updateState, handleEvent,
             endState, frameRate)
