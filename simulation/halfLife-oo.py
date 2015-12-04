@@ -47,12 +47,10 @@ plt.show()
 
 
 class State:
-    currentMass = 0
-    centerX = 500
-    centerY = 500
+    def __init__(self, mass):
+        self.currentMass = mass
 
-ooInitState = State()
-ooInitState.currentMass = initialMass
+ooInitState = State(initialMass)
 
 name = "Half Life, clicking the mouse will delay the decrease of an element by one tick. Would you let it die?"
 width = 1000
@@ -61,7 +59,7 @@ rw.newDisplay(width, height, name)
 
 def updateDisplay(state):
     dw.fill(dw.white)
-    dw.drawCircle((0, 0, 255), (random.randrange(0,1000),random.randrange(0,1000)), state.currentMass, state.currentMass)
+    dw.drawCircle((0, 0, 255), (500, 500), state.currentMass, state.currentMass)
 
 v = decayRate/10+1
 
