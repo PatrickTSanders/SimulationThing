@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import drawWorld as dw
 import runWorld as rw
 import pygame as pg
-
+import random
 def next_time(half_rate, time_int):
 
     time = 0
@@ -34,7 +34,7 @@ def next_mass(init_mass, time_int):
 
 initialMass = int(input('Enter the initial mass of the element, between 100-450: '))
 
-decayRate = int(input('Enter the half life of the element: '))
+decayRate = int(input('Enter the half life of the element, between 1-10: '))
 
 x = next_time(int(decayRate), 10)
 y = next_mass(int(initialMass), 10)
@@ -61,7 +61,7 @@ rw.newDisplay(width, height, name)
 
 def updateDisplay(state):
     dw.fill(dw.white)
-    dw.drawCircle((0, 0, 255), (500,500), state.currentMass, state.currentMass)
+    dw.drawCircle((0, 0, 255), (random.randrange(0,1000),random.randrange(0,1000)), state.currentMass, state.currentMass)
 
 v = decayRate/10+1
 
