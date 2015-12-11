@@ -77,7 +77,6 @@ def endState(state):
         return False
 
 def handleEvent(state, event):
-    v = decayRate/10+1
     if (event.type == pg.MOUSEBUTTONDOWN):
         if (state.currentMass) <= 300:
             state.currentMass = int(state.currentMass*v)
