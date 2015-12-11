@@ -36,13 +36,15 @@ initialMass = int(input('Enter the initial mass of the element, between 100-450:
 
 decayRate = int(input('Enter the half life of the element, between 1-10: '))
 
-x = next_time(int(decayRate), 10)
-y = next_mass(int(initialMass), 10)
+x = next_time(int(decayRate), 8)
+y = next_mass(int(initialMass), 8)
 
 print(x)
 print(y)
 
 plt.plot(x, y)
+plt.ylabel('Amount of Element')
+plt.xlabel('Time Passed')
 plt.show()
 
 
